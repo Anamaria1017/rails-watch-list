@@ -1,16 +1,21 @@
 <div class="p-5">
   <h1>My lists</h1>
-  <div class="cards">
+  <div class="cards d-flex justify-content-around">
     <% @lists.each do |list| %>
       <%# cards %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/random)">
-        <p><%= link_to list.name, list_path(list) %></p>
+      <% if list.photo.attached? == false %>
+      <h1>hello</h1>
+      <% else %>
+        <div class="card-category"
+        style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+        <%= link_to list.name, list_path(list) %>
+        </div>
+      <% end %>
       </div>
       <%# cards end%>
     <% end %>
   </div>
-  <br>
-  <div class="p-2">
+  <div class="p-1">
   <%= link_to "Create a new movie list", new_list_path, class: "btn btn-gradient" %>
   </div>
 </div>

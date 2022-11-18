@@ -5,7 +5,7 @@
     <div class = "d-flex justify-content-between">
       <% @list.movies.each do |movie| %>
         <div class="card-trip m-3">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <img src="<%= movie.poster_url %>" />
           <div class="card-trip-infos">
               <h4><strong><%= movie.title %></strong></h4>
                 <% movie.bookmarks.each do |bookmark| %>

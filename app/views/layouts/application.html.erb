@@ -14,8 +14,9 @@
     <%# Navbar %>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
       <div class="container-fluid">
-        <a class="navbar-brand" href="<%=lists_path%>">
-        <img src="https://cdn-icons-png.flaticon.com/512/195/195158.png" /></a>
+        <%= link_to lists_path do %>
+          <%= image_tag "https://cdn-icons-png.flaticon.com/512/195/195158.png", class: "navbar-brand" %>
+        <% end %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>

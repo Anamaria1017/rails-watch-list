@@ -1,0 +1,38 @@
+<div class ="box">
+  <div>
+    <h1>List <%= @list.name %></h1>
+    <br>
+    <div class = "d-flex justify-content-between">
+      <% @list.movies.each do |movie| %>
+        <div class="card-trip m-3">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <div class="card-trip-infos">
+              <h4><strong><%= movie.title %></strong></h4>
+                <% movie.bookmarks.each do |bookmark| %>
+                  <p>"<%= bookmark.comment %>"
+                  <%= link_to "Delete",
+                  bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
+                <% end %>
+          </div>
+        </div>
+      <% end %>
+      <br>
+    </div>
+  </div>
+
+  <div>
+    <h2>New Bookmark</h2>
+    <br>
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+      <%= f.association :movie, collection: Movie.all.order(:title), prompt: "Select a movie", input_html: { data: { controller: "tom-select" } } %>
+      <%= f.input :comment %>
+      <%= f.submit "Submit bookmark", class: "btn btn-primary" %>
+    <% end %>
+    <br>
+    <p><%= link_to "Go back", lists_path %></p>
+  </div>
+</div>
+
+<%# How can I replace the url and insert the movie.poster_url? %>
+<%# How can I make the cards occupy the max space? %>
+<%# Solve issue?: Only one comment per movie?? %>
